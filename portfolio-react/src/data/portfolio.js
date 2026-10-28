@@ -1,10 +1,10 @@
 export const personalInfo = {
-  name: 'Leonardo Castro',
+  name: 'Eyder Leonardo Castro Ortiz',
   fullName: 'Eyder Leonardo Castro Ortiz',
   title: 'Desarrollador Fullstack',
   subtitle: 'Ingeniero Mecatrónico',
   email: 'leo.castro9306@gmail.com',
-  phone: '+57 310 241 7931',
+  phone: '+57 310 241 7932',
   github: 'https://github.com/hankcas',
   location: 'Bogotá, Colombia',
   available: true,
