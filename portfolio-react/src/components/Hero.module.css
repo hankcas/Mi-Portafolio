@@ -26,7 +26,7 @@
 }
 
 .content h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+ font-size: clamp(2.5rem, 6vw, 3.6rem);
   letter-spacing: -0.03em;
   margin-bottom: var(--space-xs);
 }
