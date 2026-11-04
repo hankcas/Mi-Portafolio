@@ -12,8 +12,8 @@ export const personalInfo = {
 
 export const aboutText = [
   'Soy Leonardo Castro, un desarrollador fullstack con formación en Ingeniería Mecatrónica. Esa combinación me permite pensar en sistemas completos: desde el sensor que captura un dato hasta la interfaz que lo muestra en tiempo real.',
-  'He trabajado con startups y empresas construyendo plataformas web con React y Node.js, dashboards IoT con WebSockets, y sistemas de gestión con APIs REST. Me apasiona encontrar el punto donde la tecnología resuelve un problema real.',
-  'Actualmente profundizando en inteligencia artificial, automatización con N8N y arquitecturas cloud.',
+  'He trabajado con startups y empresas construyendo plataformas web con React y Node.js, dashboards de monitoreo en tiempo real y APIs REST en Node.js y Java. Me apasiona encontrar el punto donde la tecnología resuelve un problema real.',
+  'Actualmente profundizando en inteligencia artificial y arquitecturas cloud.',
 ]
 
 export const stats = [
@@ -32,7 +32,7 @@ export const skills = [
   {
     title: 'Backend',
     icon: 'server',
-    items: ['Node.js', 'Express', 'APIs REST', 'WebSockets', 'SQL', 'MongoDB'],
+    items: ['Node.js', 'Express', 'Java', 'Spring Boot', 'APIs REST', 'SQL'],
   },
   {
     title: 'IoT & Hardware',
@@ -45,39 +45,39 @@ export const skills = [
     items: ['Git / GitHub', 'Vercel', 'Scrum', 'VS Code', 'Postman', 'Google Workspace'],
   },
   {
-    title: 'IA & Automatización',
+    title: 'Inteligencia Artificial',
     icon: 'zap',
-    items: ['Machine Learning', 'NLP', 'N8N', 'Prompt Engineering', 'ChatGPT API'],
+    items: ['Machine Learning', 'NLP', 'Prompt Engineering', 'ChatGPT API'],
   },
 ]
 
 export const projects = [
   {
-    title: 'Dashboard IoT en Tiempo Real',
-    description: 'Panel de monitoreo de sensores con ESP32, visualización de datos en vivo mediante WebSockets y alertas automáticas.',
-    tech: ['React', 'Node.js', 'WebSockets', 'Chart.js', 'ESP32'],
-    github: 'https://github.com/hankcas/iot-dashboard',
+    title: 'Monitor Dashboard Industrial',
+    description: 'Monitoreo de una línea de producción con 4 sensores simulados (temperatura, humedad, presión y consumo), umbrales de alarma, gráfica de tendencia, registro de eventos y encendido/apagado desde una API en Express.',
+    tech: ['React', 'Chart.js', 'Node.js', 'Express', 'CSS Modules'],
+    github: 'https://github.com/hankcas/monitor-dashboard-app',
     icon: 'activity',
   },
   {
-    title: 'Task Manager Full Stack',
-    description: 'Sistema de gestión de tareas con autenticación, CRUD completo, filtros por prioridad/categoría y estadísticas.',
-    tech: ['React', 'Express', 'SQLite', 'API REST', 'Auth'],
-    github: 'https://github.com/hankcas/task-manager',
-    icon: 'layout',
+    title: 'API de Gestión de Pólizas',
+    description: 'API REST para administrar pólizas y riesgos: consultas por tipo y estado, renovación y cancelación con reglas de negocio, y un mock de integración con el CORE transaccional.',
+    tech: ['Java 17', 'Spring Boot', 'Spring Data JPA', 'H2', 'Maven'],
+    github: 'https://github.com/hankcas/polizas_api',
+    icon: 'shield',
   },
   {
-    title: 'Asistente IA con N8N',
-    description: 'Chatbot inteligente con interfaz conversacional, renderizado de Markdown y conexión a workflows de N8N.',
-    tech: ['React', 'Node.js', 'N8N', 'API IA', 'Markdown'],
-    github: 'https://github.com/hankcas/ai-assistant',
-    icon: 'message',
+    title: 'Rick & Morty Explorer',
+    description: 'Explorador de personajes que consume una API pública, con búsqueda, filtros por estado y género, paginación y estados de carga y error.',
+    tech: ['React', 'Vite', 'Hooks personalizados', 'API REST', 'CSS Modules'],
+    github: 'https://github.com/hankcas/react-task-manager-app',
+    icon: 'search',
   },
 ]
 
 export const experience = [
   {
-    period: '2025 – Presente',
+    period: 'Sep 2022 – Presente',
     title: 'Desarrollador Fullstack',
     company: 'Freelance',
     description: 'Desarrollo de aplicaciones web a medida con React y Node.js. Integración de APIs, dashboards y soluciones IoT para clientes directos.',

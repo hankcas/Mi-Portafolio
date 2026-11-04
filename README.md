@@ -1,16 +1,51 @@
-# React + Vite
+# Portafolio · Leonardo Castro
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portafolio personal de **Eyder Leonardo Castro Ortiz**, Ingeniero Mecatrónico y Desarrollador Full Stack. Reúne mi experiencia, habilidades y proyectos, con modo claro y oscuro.
 
-Currently, two official plugins are available:
+## Secciones
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Inicio** — presentación y disponibilidad
+- **Sobre mí** — perfil y cifras principales
+- **Habilidades** — frontend, backend, IoT y hardware, herramientas e inteligencia artificial
+- **Proyectos** — trabajos destacados con enlace a su repositorio
+- **Experiencia** y **Educación**
+- **Contacto**
 
-## React Compiler
+## Proyectos destacados
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Proyecto | Descripción | Tecnologías |
+|---|---|---|
+| [Monitor Dashboard Industrial](https://github.com/hankcas/monitor-dashboard-app) | Monitoreo de sensores con umbrales, alarmas y control del sistema | React, Chart.js, Node.js, Express |
+| [API de Gestión de Pólizas](https://github.com/hankcas/polizas_api) | API REST de pólizas y riesgos con reglas de negocio | Java, Spring Boot, JPA |
+| [Rick & Morty Explorer](https://github.com/hankcas/react-task-manager-app) | Explorador de personajes con filtros y paginación | React, Vite |
 
-## Expanding the Oxlint configuration
+## Tecnologías
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- React 19 + Vite
+- CSS Modules
+- Despliegue continuo en Vercel desde GitHub
+
+## Estructura
+
+```
+src/
+├── components/     # Navbar, Hero, About, Skills, Projects, Experience, Education, Contact, Footer
+├── data/
+│   └── portfolio.js  # Todo el contenido del sitio (textos, proyectos, experiencia)
+├── styles/         # Estilos globales y variables de tema
+└── App.jsx
+```
+
+Para actualizar el contenido solo hay que editar `src/data/portfolio.js`.
+
+## Cómo ejecutarlo
+
+```bash
+npm install
+npm run dev
+```
+
+## Contacto
+
+- GitHub: [hankcas](https://github.com/hankcas)
+- Correo: leo.castro9306@gmail.com

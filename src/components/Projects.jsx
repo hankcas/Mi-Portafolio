@@ -3,8 +3,8 @@ import styles from './Projects.module.css'
 
 const icons = {
   activity: '📊',
-  layout: '📋',
-  message: '🤖',
+  shield: '🛡️',
+  search: '🔎',
 }
 
 export default function Projects() {
