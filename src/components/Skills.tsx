@@ -1,7 +1,8 @@
 import { skills } from '../data/portfolio'
+import type { SkillIcon } from '../types/portfolio'
 import styles from './Skills.module.css'
 
-const icons = {
+const icons: Record<SkillIcon, string> = {
   layers: '◇',
   server: '⬡',
   cpu: '⚙',
@@ -19,7 +20,7 @@ export default function Skills() {
         {skills.map((group, i) => (
           <div key={i} className={styles.card}>
             <div className={styles.cardHeader}>
-              <span className={styles.icon}>{icons[group.icon] || '•'}</span>
+              <span className={styles.icon}>{icons[group.icon]}</span>
               <h3>{group.title}</h3>
             </div>
             <div className={styles.tags}>

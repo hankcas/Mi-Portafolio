@@ -2,7 +2,12 @@ import { useState, useEffect } from 'react'
 import { navLinks } from '../data/portfolio'
 import styles from './Navbar.module.css'
 
-export default function Navbar({ darkMode, toggleTheme }) {
+interface NavbarProps {
+  darkMode: boolean
+  toggleTheme: () => void
+}
+
+export default function Navbar({ darkMode, toggleTheme }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 

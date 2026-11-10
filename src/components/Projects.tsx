@@ -1,7 +1,8 @@
 import { projects } from '../data/portfolio'
+import type { ProjectIcon } from '../types/portfolio'
 import styles from './Projects.module.css'
 
-const icons = {
+const icons: Record<ProjectIcon, string> = {
   activity: '📊',
   shield: '🛡️',
   search: '🔎',
@@ -17,7 +18,7 @@ export default function Projects() {
         {projects.map((project, i) => (
           <div key={i} className={styles.card}>
             <div className={styles.header}>
-              <span className={styles.icon}>{icons[project.icon] || '📁'}</span>
+              <span className={styles.icon}>{icons[project.icon]}</span>
               <h3>{project.title}</h3>
             </div>
             <p className={styles.desc}>{project.description}</p>
