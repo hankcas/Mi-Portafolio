@@ -6,6 +6,11 @@ export interface PersonalInfo {
   fullName: string
   title: string
   subtitle: string
+  /** Main pitch shown under the title in the hero. */
+  summary: string
+  /** What sets the profile apart (Mechatronics + IoT). */
+  differentiator: string
+  highlights: string[]
   email: string
   phone: string
   github: string

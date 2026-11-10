@@ -11,8 +11,13 @@ import type {
 export const personalInfo: PersonalInfo = {
   name: 'Leonardo Castro',
   fullName: 'Eyder Leonardo Castro Ortiz',
-  title: 'Desarrollador Fullstack',
+  title: 'Full Stack Developer',
   subtitle: 'Ingeniero Mecatrónico',
+  summary:
+    'Construyo aplicaciones web completas con React, Node.js y TypeScript: de la interfaz a la API y la base de datos.',
+  differentiator:
+    'Mi diferencial: vengo de la Mecatrónica y el IoT, así que llevo datos de sensores reales a interfaces en tiempo real.',
+  highlights: ['Mecatrónica', 'IoT', 'Tiempo real'],
   email: 'leo.castro9306@gmail.com',
   phone: '+57 310 241 7931',
   github: 'https://github.com/hankcas',
@@ -21,7 +26,7 @@ export const personalInfo: PersonalInfo = {
 }
 
 export const aboutText: string[] = [
-  'Soy Leonardo Castro, un desarrollador fullstack con formación en Ingeniería Mecatrónica. Esa combinación me permite pensar en sistemas completos: desde el sensor que captura un dato hasta la interfaz que lo muestra en tiempo real.',
+  'Soy Leonardo Castro, Full Stack Developer con formación en Ingeniería Mecatrónica. Esa combinación me permite pensar en sistemas completos: desde el sensor que captura un dato hasta la interfaz que lo muestra en tiempo real.',
   'He trabajado con startups y empresas construyendo plataformas web con React y Node.js, dashboards de monitoreo en tiempo real y APIs REST en Node.js y Java. Me apasiona encontrar el punto donde la tecnología resuelve un problema real.',
   'Actualmente profundizando en inteligencia artificial y arquitecturas cloud.',
 ]
