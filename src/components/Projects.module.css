@@ -1,72 +1,135 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1.25rem;
 }
 
 .card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
+  position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 1.6rem;
+  border-radius: var(--radius);
+  transition: transform 0.4s var(--ease), border-color 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
-.header {
+/* ---------- HUD targeting corners ----------
+   Eight thin gradients draw the four L-shaped brackets.
+   On hover the brackets move outwards and light up. */
+.corners {
+  --c: color-mix(in srgb, var(--accent) 55%, transparent);
+  --len: 16px;
+  --w: 1.5px;
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--c), var(--c)) top left / var(--len) var(--w),
+    linear-gradient(var(--c), var(--c)) top left / var(--w) var(--len),
+    linear-gradient(var(--c), var(--c)) top right / var(--len) var(--w),
+    linear-gradient(var(--c), var(--c)) top right / var(--w) var(--len),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--len) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom left / var(--w) var(--len),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--len) var(--w),
+    linear-gradient(var(--c), var(--c)) bottom right / var(--w) var(--len);
+  background-repeat: no-repeat;
+  transition: inset 0.4s var(--ease), filter 0.3s;
+}
+
+.card:hover .corners {
+  --c: var(--accent);
+  inset: 4px;
+  filter: drop-shadow(0 0 4px var(--accent));
+}
+
+.top {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.8rem;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
 }
 
 .icon {
-  font-size: 1.3rem;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
 }
 
-.header h3 {
-  font-size: 1rem;
+.index {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.card h3 {
+  font-size: 1.12rem;
   font-weight: 600;
+  margin-bottom: 0.6rem;
 }
 
 .desc {
-  color: var(--text-secondary);
-  font-size: 0.88rem;
-  margin-bottom: 1rem;
   flex: 1;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
 }
 
 .tech {
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-bottom: 1rem;
+  list-style: none;
+  margin-bottom: 1.3rem;
 }
 
-.tag {
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 0.25rem 0.6rem;
-  border-radius: 5px;
-  background: rgba(63, 168, 196, 0.1);
+.tech li {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.22rem 0.6rem;
+  border-radius: 6px;
   color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .link {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.2s;
+  color: var(--text);
 }
 
 .link:hover {
-  color: var(--accent-glow);
+  color: var(--accent);
+}
+
+.arrow {
+  transition: transform 0.3s var(--ease);
+}
+
+.link:hover .arrow {
+  transform: translate(2px, -2px);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }

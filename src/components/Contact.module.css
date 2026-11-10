@@ -1,49 +1,109 @@
+.panel {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1.75rem, 5vw, 3.5rem);
+  text-align: center;
+}
+
+/* Soft aurora glow inside the panel */
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: -40% 10% auto;
+  height: 80%;
+  z-index: -1;
+  background: radial-gradient(closest-side, var(--aurora-2), transparent);
+  filter: blur(30px);
+}
+
+.panel h2 {
+  margin-bottom: 1rem;
+}
+
 .intro {
+  max-width: 34rem;
+  margin: 0 auto 0.75rem;
   color: var(--text-secondary);
-  margin-bottom: var(--space-md);
-  max-width: 480px;
+  font-size: 1.04rem;
+}
+
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
 }
 
 .links {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 0.9rem;
+  text-align: left;
+}
+
+/* The email is the longest value: give its card more room on wide screens. */
+@media (min-width: 821px) {
+  .links {
+    grid-template-columns: 1.45fr 1fr 1fr;
+  }
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'icon label'
+    'icon value';
+  column-gap: 0.85rem;
   align-items: center;
-  gap: 0.3rem;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
+  padding: 1rem 2.4rem 1rem 1.1rem;
   border-radius: var(--radius);
-  padding: 1.5rem 1rem;
-  text-decoration: none;
-  transition: transform 0.2s, border-color 0.2s;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+  transition: transform 0.4s var(--ease), border-color 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   border-color: var(--accent);
+  color: var(--text);
 }
 
 .icon {
-  font-size: 1.5rem;
-  margin-bottom: 0.2rem;
+  grid-area: icon;
+  display: grid;
+  color: var(--accent);
 }
 
 .label {
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--muted);
+  grid-area: label;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--muted);
 }
 
 .value {
-  font-size: 0.88rem;
-  color: var(--text);
-  text-align: center;
+  grid-area: value;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.arrow {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  color: var(--muted);
+  transition: transform 0.3s var(--ease), color 0.2s;
+}
+
+.card:hover .arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
 }
