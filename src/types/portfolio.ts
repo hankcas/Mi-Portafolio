@@ -41,6 +41,8 @@ export interface Project {
   icon: ProjectIcon
   /** Live version of the project, if it is deployed. */
   demo?: string
+  /** Text of the demo button; defaults to "Ver demo". */
+  demoLabel?: string
   /** Featured projects take the full width and can show a screenshot. */
   featured?: boolean
   image?: {
@@ -48,7 +50,7 @@ export interface Project {
     alt: string
     credit?: string
   }
-  /** Short facts shown as telemetry-style chips (featured cards only). */
+  /** Short facts shown as telemetry-style chips. */
   facts?: string[]
 }
 
