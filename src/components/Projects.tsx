@@ -55,7 +55,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div className={styles.links}>
           {project.demo && (
             <a href={project.demo} target="_blank" rel="noopener noreferrer" className={styles.demo}>
-              Ver demo
+              {project.demoLabel ?? 'Ver demo'}
               <ArrowUpRight size={16} aria-hidden="true" className={styles.arrow} />
               <span className={styles.srOnly}> de {project.title} (se abre en otra pestaña)</span>
             </a>

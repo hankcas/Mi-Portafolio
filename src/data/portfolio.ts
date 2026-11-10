@@ -92,10 +92,13 @@ export const projects: Project[] = [
   },
   {
     title: 'API de Gestión de Pólizas',
-    description: 'API REST para administrar pólizas y riesgos: consultas por tipo y estado, renovación y cancelación con reglas de negocio, y un mock de integración con el CORE transaccional.',
-    tech: ['Java 17', 'Spring Boot', 'Spring Data JPA', 'H2', 'Maven'],
+    description: 'API REST para administrar pólizas de seguro y sus riesgos: filtros por tipo y estado, renovación con IPC y cancelación según reglas de negocio, seguridad por API key y eventos enviados a un CORE transaccional después de cada commit.',
+    tech: ['Java 17', 'Spring Boot', 'Spring Data JPA', 'H2', 'Swagger', 'Docker'],
     github: 'https://github.com/hankcas/polizas_api',
+    demo: 'https://polizas-api-g8ew.onrender.com/swagger-ui.html',
+    demoLabel: 'Probar API',
     icon: 'shield',
+    facts: ['31 pruebas automatizadas', 'Swagger UI', 'Docker + Render'],
   },
   {
     title: 'Rick & Morty Explorer',
