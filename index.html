@@ -1,10 +1,29 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio-react</title>
+    <title>Leonardo Castro · Full Stack Developer</title>
+    <meta
+      name="description"
+      content="Leonardo Castro, Full Stack Developer con base en Ingeniería Mecatrónica e IoT. React, Node.js, TypeScript y Java."
+    />
+    <meta name="theme-color" content="#060A14" />
+    <script>
+      // Apply the saved theme before the first paint to avoid a white flash.
+      try {
+        var saved = localStorage.getItem('theme')
+        var dark = saved ? saved === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light')
+      } catch (e) {}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    />
   </head>
   <body>
     <div id="root"></div>

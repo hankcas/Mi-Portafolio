@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Menu, Moon, Sun, X } from 'lucide-react'
 import { navLinks } from '../data/portfolio'
 import styles from './Navbar.module.css'
 
@@ -13,52 +14,62 @@ export default function Navbar({ darkMode, toggleTheme }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleLinkClick = () => setMenuOpen(false)
+  // Close the mobile menu with the Escape key.
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [menuOpen])
+
+  const closeMenu = () => setMenuOpen(false)
 
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-      <a href="#" className={styles.logo}>
-        leo<span>.</span>castro
+    <header className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
+      <a href="#inicio" className={styles.logo} onClick={closeMenu}>
+        leo<span className="gradient-text">.</span>castro
       </a>
 
-      <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
-        {navLinks.map(link => (
-          <li key={link.href}>
-            <a href={link.href} onClick={handleLinkClick}>
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <nav aria-label="Principal">
+        <ul id="menu-principal" className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
+          {navLinks.map(link => (
+            <li key={link.href}>
+              <a href={link.href} onClick={closeMenu}>
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       <div className={styles.actions}>
         <button
-          className={styles.themeBtn}
+          type="button"
+          className={styles.iconBtn}
           onClick={toggleTheme}
-          aria-label={darkMode ? 'Modo claro' : 'Modo oscuro'}
+          aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
         >
-          {darkMode ? '☀️' : '🌙'}
+          {darkMode ? <Sun size={18} /> : <Moon size={18} />}
         </button>
 
         <button
-          className={styles.hamburger}
+          type="button"
+          className={`${styles.iconBtn} ${styles.hamburger}`}
           onClick={() => setMenuOpen(prev => !prev)}
-          aria-label="Menú"
+          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={menuOpen}
+          aria-controls="menu-principal"
         >
-          <svg width="24" height="24" fill="none" stroke="#fff" strokeWidth="2">
-            {menuOpen ? (
-              <path d="M6 6l12 12M6 18L18 6" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            )}
-          </svg>
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
-    </nav>
+
+      {menuOpen && <div className={styles.backdrop} onClick={closeMenu} aria-hidden="true" />}
+    </header>
   )
 }

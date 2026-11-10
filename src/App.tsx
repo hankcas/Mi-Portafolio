@@ -9,33 +9,52 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import { useRevealOnScroll } from './hooks/useRevealOnScroll'
+
+function getInitialDarkMode(): boolean {
+  try {
+    const saved = localStorage.getItem('theme')
+    if (saved) return saved === 'dark'
+  } catch {
+    // localStorage can be blocked (private mode); fall back to the system theme.
+  }
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+}
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    try {
-      const saved = localStorage.getItem('theme')
-      if (saved) return saved === 'dark'
-    } catch {}
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-  })
+  const [darkMode, setDarkMode] = useState(getInitialDarkMode)
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light')
-    try { localStorage.setItem('theme', darkMode ? 'dark' : 'light') } catch {}
+    const theme = darkMode ? 'dark' : 'light'
+    document.documentElement.setAttribute('data-theme', theme)
+    try {
+      localStorage.setItem('theme', theme)
+    } catch {
+      // Ignore: the theme still works for this visit.
+    }
   }, [darkMode])
+
+  useRevealOnScroll()
 
   const toggleTheme = () => setDarkMode(prev => !prev)
 
   return (
     <>
+      <div className="aurora" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
       <Navbar darkMode={darkMode} toggleTheme={toggleTheme} />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Education />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Education />
+        <Contact />
+      </main>
       <Footer />
       <ScrollToTop />
     </>

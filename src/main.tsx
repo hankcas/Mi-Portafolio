@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+// Global styles first, so each component's CSS Module can override them.
 import './styles/global.css'
+import App from './App'
 
 const rootElement = document.getElementById('root')
 if (!rootElement) {

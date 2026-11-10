@@ -1,40 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
-
+/* ==========================================================
+   Design tokens — "Aurora" base with subtle HUD details.
+   Dark is the signature look; light keeps the same identity.
+   ========================================================== */
 :root {
-  --deep: #162231;
-  --surface: #FDFDFC;
-  --accent: #3FA8C4;
-  --accent-glow: #2E8DA6;
-  --muted: #8A9BB0;
-  --card-bg: #F5F7FA;
-  --text: #1C2A3A;
-  --text-secondary: #4A5E73;
-  --border: #E2E8F0;
+  --bg: #F3F6FB;
+  --bg-elevated: #FFFFFF;
+  --text: #0E1726;
+  --text-secondary: #46566B;
+  --muted: #6A7A90;
+
+  --accent: #0891B2;          /* cyan */
+  --accent-2: #7C3AED;        /* violet */
+  --accent-soft: rgba(8, 145, 178, 0.10);
+  --gradient: linear-gradient(120deg, #0891B2 0%, #4F6BE8 55%, #7C3AED 100%);
+
+  --glass: rgba(255, 255, 255, 0.62);
+  --glass-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(14, 23, 38, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.9);
+  --shadow: 0 10px 30px -12px rgba(14, 23, 38, 0.18);
+
+  --aurora-1: rgba(34, 211, 238, 0.35);
+  --aurora-2: rgba(124, 58, 237, 0.22);
+  --aurora-3: rgba(59, 130, 246, 0.20);
+  --grid-line: rgba(8, 145, 178, 0.10);
+
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 3rem;
-  --space-xl: 5rem;
-  --radius: 10px;
-  --shadow: 0 1px 3px rgba(0,0,0,0.06);
+  --space-xl: 6rem;
+  --radius: 12px;
+  --radius-lg: 18px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 :root[data-theme="dark"] {
-  --deep: #0D1520;
-  --surface: #151E2B;
-  --accent: #4DBAD6;
-  --accent-glow: #3FA8C4;
-  --muted: #6B7F96;
-  --card-bg: #1C2836;
-  --text: #E4EAF0;
-  --text-secondary: #9AADBE;
-  --border: #2A3A4C;
-  --shadow: 0 1px 3px rgba(0,0,0,0.2);
+  --bg: #060A14;
+  --bg-elevated: #0C1322;
+  --text: #E7EEF7;
+  --text-secondary: #9DAABD;
+  --muted: #6E7D93;
+
+  --accent: #22D3EE;
+  --accent-2: #A78BFA;
+  --accent-soft: rgba(34, 211, 238, 0.10);
+  --gradient: linear-gradient(120deg, #22D3EE 0%, #60A5FA 50%, #A78BFA 100%);
+
+  --glass: rgba(255, 255, 255, 0.035);
+  --glass-strong: rgba(10, 16, 30, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.06);
+  --shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.7);
+
+  --aurora-1: rgba(34, 211, 238, 0.18);
+  --aurora-2: rgba(139, 92, 246, 0.20);
+  --aurora-3: rgba(37, 99, 235, 0.14);
+  --grid-line: rgba(34, 211, 238, 0.07);
   color-scheme: dark;
 }
 
+/* ---------- Reset & base ---------- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -43,22 +73,24 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 60px;
+  scroll-padding-top: 72px;
 }
 
 body {
-  background: var(--surface);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.65;
-  transition: background 0.3s, color 0.3s;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s, color 0.4s;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   text-wrap: balance;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 a {
@@ -67,41 +99,149 @@ a {
   transition: color 0.2s;
 }
 
-a:hover {
-  color: var(--accent-glow);
-}
-
 img {
   max-width: 100%;
+  display: block;
 }
 
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Aurora background (fixed, behind everything) ---------- */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.aurora span:nth-child(1) {
+  width: 55vmax;
+  height: 55vmax;
+  top: -20vmax;
+  left: -15vmax;
+  background: var(--aurora-1);
+  animation: drift-1 28s ease-in-out infinite alternate;
+}
+
+.aurora span:nth-child(2) {
+  width: 50vmax;
+  height: 50vmax;
+  top: 10vmax;
+  right: -20vmax;
+  background: var(--aurora-2);
+  animation: drift-2 34s ease-in-out infinite alternate;
+}
+
+.aurora span:nth-child(3) {
+  width: 45vmax;
+  height: 45vmax;
+  bottom: -25vmax;
+  left: 20vmax;
+  background: var(--aurora-3);
+  animation: drift-3 40s ease-in-out infinite alternate;
+}
+
+@keyframes drift-1 {
+  to { transform: translate(12vmax, 8vmax) scale(1.1); }
+}
+@keyframes drift-2 {
+  to { transform: translate(-10vmax, 12vmax) scale(0.9); }
+}
+@keyframes drift-3 {
+  to { transform: translate(-8vmax, -10vmax) scale(1.15); }
+}
+
+/* ---------- Glass surface (cards, nav, buttons) ---------- */
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), var(--shadow);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------- Sections ---------- */
 .section {
-  padding-block: var(--space-xl);
-  max-width: 960px;
+  padding-block: var(--space-xl) 0;
+  max-width: 1040px;
   margin: 0 auto;
   padding-inline: clamp(16px, 4vw, 48px);
 }
 
 .section-label {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
   color: var(--accent);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0.75rem;
+}
+
+.section-label::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gradient);
 }
 
 .section h2 {
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  letter-spacing: -0.02em;
-  margin-bottom: var(--space-md);
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-lg);
 }
 
+/* ---------- Reveal on scroll (see useRevealOnScroll) ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Accessibility: respect "reduce motion" ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
   }
   html { scroll-behavior: auto; }
+  [data-reveal] { opacity: 1; transform: none; }
 }
