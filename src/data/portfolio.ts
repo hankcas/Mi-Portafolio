@@ -1,8 +1,23 @@
-export const personalInfo = {
+import type {
+  EducationItem,
+  ExperienceItem,
+  NavLink,
+  PersonalInfo,
+  Project,
+  SkillGroup,
+  Stat,
+} from '../types/portfolio'
+
+export const personalInfo: PersonalInfo = {
   name: 'Leonardo Castro',
   fullName: 'Eyder Leonardo Castro Ortiz',
-  title: 'Desarrollador Fullstack',
+  title: 'Full Stack Developer',
   subtitle: 'Ingeniero Mecatrónico',
+  summary:
+    'Construyo aplicaciones web completas con React, Node.js y TypeScript: de la interfaz a la API y la base de datos.',
+  differentiator:
+    'Mi diferencial: vengo de la Mecatrónica y el IoT, así que llevo datos de sensores reales a interfaces en tiempo real.',
+  highlights: ['Mecatrónica', 'IoT', 'Tiempo real'],
   email: 'leo.castro9306@gmail.com',
   phone: '+57 310 241 7931',
   github: 'https://github.com/hankcas',
@@ -10,20 +25,20 @@ export const personalInfo = {
   available: true,
 }
 
-export const aboutText = [
-  'Soy Leonardo Castro, un desarrollador fullstack con formación en Ingeniería Mecatrónica. Esa combinación me permite pensar en sistemas completos: desde el sensor que captura un dato hasta la interfaz que lo muestra en tiempo real.',
+export const aboutText: string[] = [
+  'Soy Leonardo Castro, Full Stack Developer con formación en Ingeniería Mecatrónica. Esa combinación me permite pensar en sistemas completos: desde el sensor que captura un dato hasta la interfaz que lo muestra en tiempo real.',
   'He trabajado con startups y empresas construyendo plataformas web con React y Node.js, dashboards de monitoreo en tiempo real y APIs REST en Node.js y Java. Me apasiona encontrar el punto donde la tecnología resuelve un problema real.',
   'Actualmente profundizando en inteligencia artificial y arquitecturas cloud.',
 ]
 
-export const stats = [
+export const stats: Stat[] = [
   { number: '3+', label: 'Años de experiencia' },
   { number: '10+', label: 'Proyectos entregados' },
   { number: '2', label: 'Títulos profesionales' },
   { number: 'IoT', label: 'Hardware + Software' },
 ]
 
-export const skills = [
+export const skills: SkillGroup[] = [
   {
     title: 'Frontend',
     icon: 'layers',
@@ -51,7 +66,7 @@ export const skills = [
   },
 ]
 
-export const projects = [
+export const projects: Project[] = [
   {
     title: 'Monitor Dashboard Industrial',
     description: 'Monitoreo de una línea de producción con 4 sensores simulados (temperatura, humedad, presión y consumo), umbrales de alarma, gráfica de tendencia, registro de eventos y encendido/apagado desde una API en Express.',
@@ -75,7 +90,7 @@ export const projects = [
   },
 ]
 
-export const experience = [
+export const experience: ExperienceItem[] = [
   {
     period: 'Sep 2022 – Presente',
     title: 'Desarrollador Fullstack',
@@ -102,14 +117,14 @@ export const experience = [
   },
 ]
 
-export const education = [
+export const education: EducationItem[] = [
   { year: '2025', title: 'Especialización en Desarrollo de Software', institution: 'Profundización en arquitectura de aplicaciones y buenas prácticas' },
   { year: '2025', title: 'Bootcamp Fullstack', institution: 'Formación intensiva en React, Node.js, bases de datos y despliegue' },
   { year: '2021', title: 'Ingeniería Mecatrónica', institution: 'Universidad TEINCO — Integración de mecánica, electrónica y programación' },
   { year: '2017', title: 'Tecnólogo en Automatización Mecatrónica', institution: 'SENA — Automatización industrial, PLCs y control de procesos' },
 ]
 
-export const navLinks = [
+export const navLinks: NavLink[] = [
   { href: '#sobre-mi', label: 'Sobre mí' },
   { href: '#habilidades', label: 'Habilidades' },
   { href: '#proyectos', label: 'Proyectos' },
