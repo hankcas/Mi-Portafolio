@@ -7,6 +7,7 @@ import type {
   SkillGroup,
   Stat,
 } from '../types/portfolio'
+import navexaMap from '../assets/projects/navexa-map.webp'
 
 export const personalInfo: PersonalInfo = {
   name: 'Leonardo Castro',
@@ -67,6 +68,21 @@ export const skills: SkillGroup[] = [
 ]
 
 export const projects: Project[] = [
+  {
+    title: 'Navexa · Monitoreo de flotas',
+    description: 'Plataforma web conectada a la API de rastreo Wialon: mapa en vivo, dashboard, gestión de conductores y pasajeros, historial de recorridos con reproducción, exportación a CSV y auditoría, con control de acceso por roles.',
+    tech: ['React', 'TypeScript', 'TanStack Query', 'Leaflet', 'FastAPI', 'PostgreSQL'],
+    github: 'https://github.com/hankcas/Navexa',
+    demo: 'https://navexa-three.vercel.app',
+    icon: 'navigation',
+    featured: true,
+    image: {
+      src: navexaMap,
+      alt: 'Mapa de Navexa con los vehículos de la flota agrupados sobre Colombia',
+      credit: '© OpenStreetMap',
+    },
+    facts: ['490 pruebas automatizadas', 'Roles y permisos', 'Vercel + Render'],
+  },
   {
     title: 'Monitor Dashboard Industrial',
     description: 'Monitoreo de una línea de producción con 4 sensores simulados (temperatura, humedad, presión y consumo), umbrales de alarma, gráfica de tendencia, registro de eventos y encendido/apagado desde una API en Express.',

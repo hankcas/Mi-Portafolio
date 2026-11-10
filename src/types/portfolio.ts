@@ -25,7 +25,7 @@ export interface Stat {
 
 // Only these icon names exist in Skills.tsx and Projects.tsx.
 export type SkillIcon = 'layers' | 'server' | 'cpu' | 'tool' | 'zap'
-export type ProjectIcon = 'activity' | 'shield' | 'search'
+export type ProjectIcon = 'navigation' | 'activity' | 'shield' | 'search'
 
 export interface SkillGroup {
   title: string
@@ -39,6 +39,17 @@ export interface Project {
   tech: string[]
   github: string
   icon: ProjectIcon
+  /** Live version of the project, if it is deployed. */
+  demo?: string
+  /** Featured projects take the full width and can show a screenshot. */
+  featured?: boolean
+  image?: {
+    src: string
+    alt: string
+    credit?: string
+  }
+  /** Short facts shown as telemetry-style chips (featured cards only). */
+  facts?: string[]
 }
 
 export interface ExperienceItem {
